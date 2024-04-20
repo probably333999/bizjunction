@@ -20,6 +20,7 @@ bot.start((ctx) => {
 bot.on('text', (ctx) => {
     const messageFromUser = ctx.message.text;
     const senderUserId = ctx.from.id;
+    const senderUsername = ctx.from.username;
     const { language, messageSent } = sentMessages[senderUserId];
 
     if (!messageSent) {
