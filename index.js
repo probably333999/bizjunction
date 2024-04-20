@@ -20,12 +20,12 @@ bot.start((ctx) => {
 bot.on('text', (ctx) => {
     const messageFromUser = ctx.message.text;
     const senderUserId = ctx.from.id;
-    const senderUsername = ctx.from.username;
+    const senderUsername = ctx.from.username; // Get the username of the sender
     const { language, messageSent } = sentMessages[senderUserId];
 
     if (!messageSent) {
-        // Send the user's message and language preference to the target user
-        bot.telegram.sendMessage(targetUserId, `Language preference from user ${senderUserId}: ${language}\nMessage: ${messageFromUser}`)
+        // Send the user's message, username, and language preference to the target user
+        bot.telegram.sendMessage(targetUserId, `Language preference from user ${senderUserId} (${senderUsername}): ${language}\nMessage: ${messageFromUser}`)
             .then(() => {
                 ctx.reply(`✅ Спасибо за ваше сообщение! Мы обязательно рассмотрим его и выберем нужных вам людей.`);
                 sentMessages[senderUserId].messageSent = true; // Mark message as sent
