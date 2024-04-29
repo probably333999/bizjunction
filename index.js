@@ -28,14 +28,14 @@ bot.on('text', (ctx) => {
         bot.telegram.sendMessage(targetUserId, `Language preference from user ${senderUserId} (${senderUsername}): ${language}\nMessage: ${messageFromUser}`)
             .then(() => {
                 ctx.reply(`✅ Спасибо за ваше сообщение! Мы обязательно рассмотрим его и выберем нужных вам людей.`);
-                sentMessages[senderUserId].messageSent = true; // Mark message as sent
+                // sentMessages[senderUserId].messageSent = true; // Removed marking message as sent to allow multiple messages
             })
             .catch((error) => {
                 console.error('Извините, попробуйте еще раз через некоторое время', error);
                 ctx.reply('Извините, при отправке вашего сообщения произошла ошибка. Пожалуйста, попробуйте еще раз позже.');
             });
     } else {
-        ctx.reply('Вы уже отправили заявкy. Пожалуйста подождите!');
+        ctx.reply('✅ Ваше сообщение успешно доставлено. Вы можете отправить еще одно, если хотите.');
     }
 });
 
